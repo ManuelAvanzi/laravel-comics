@@ -12281,3 +12281,11 @@ main .cards-container .card img {
   cursor: pointer;
 }
 
+.empty-page-container {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
