@@ -1,0 +1,35 @@
+main {
+    background-color: #1d1c1c;
+    position: relative;
+    text-transform: uppercase;
+    color: #fdf0ff;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    
+    li{
+        list-style: none;
+        color:#1d1c1c;
+        
+    }
+    .cards-container{
+        width: 70%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        border:1px solid green;
+
+        .card {
+            margin-top: 30px;
+            width: 200px;
+            padding: 0;
+    
+            img {
+                width: 100%;
+                cursor: pointer;
+            }
+    }
+
+}
+}
