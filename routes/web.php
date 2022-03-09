@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+    Route::get('/',function(){
+        $data=config("comics");
+        //dump($data);
+
+        //passo alla view home l'array
+        return view('home',compact("data"));
+    });
+
+
