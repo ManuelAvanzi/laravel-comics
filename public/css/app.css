@@ -12267,7 +12267,6 @@ main .cards-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  border: 1px solid green;
 }
 
 main .cards-container .card {

@@ -1,0 +1,47 @@
+per ogni prodotto voglio che al click compaia una pagina specifica del singolo prodotto
+proviamo a farlo in più passaggi :
+per prima cosa vediamo che se passiamo un id alla Route:: e poi facciamo il var damp , 
+passimao il numero 123445 e poi andiamo nel url e scriviamo /comics/123445 , 
+questo numero è un ID che poi andremo a prendere da un array
+
+///////////////////////
+Route::get('/comics/{id}',function ($id){
+        dump($id);
+    })->name("comics.details");
+///////////////////////////////
+
+Route::get('/comics/{id}',function ($id){
+        $data=config("comics");
+
+        //mi assicuro che l'utente scriva qualcosa di sensato 
+        if(!is_numeric($id) || (int) $id >= count($data)){
+            abort('404');
+        }
+
+        $comics=$data[$id];
+      // in risposta mando la view
+        return view("dettagliFumetto", compact("comics"));
+    })->name("comics.details");
+
+
+con una sola rotta chiamiamo qualsiasi view , perchè viene passato un id univoco per ogni prodotto e quindi per ogni pagina 
+---------------------------------------------
+---dentro la view intanto mettiamo questo 
+  
+  @extends('layouts.default');
+
+@section('pageTitle',$comics["title"])
+
+
+
+@section('content')
+//stampo il titolo del fumetto e l'immagine
+<h2>{{ $comics["title"] }}</h2>
+<img src="{{ $comics["thumb"] }}"</img>
+
+@endsection
+
+------------------------------------------------
+-----------------------------------------------
+nel main ho una lista di fumetti e per ogni fumetto c'è un link details , e voglio che quando ci clicco sopra vado a finire sulla pagina dello specifico fumetto
+<a href="{{ route('comics.details', $loop->index) }}" class="details-link">Details</a> 

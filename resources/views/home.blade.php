@@ -15,6 +15,7 @@
         <div class="card">
             <img src= {{$fumetto["thumb"] }}>
             <li>  {{$fumetto["title"]}}</li>
+            <a href="{{ route('comics.details', $loop->index) }}" class="details-link">Details</a> 
         </div>
             
             

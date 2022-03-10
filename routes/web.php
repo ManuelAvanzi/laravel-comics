@@ -22,6 +22,21 @@ use Illuminate\Support\Facades\Route;
         return view('home',compact("data"));
     })->name("home");
 
+    Route::get('/comics/{id}',function ($id){
+        
+
+        $data=config("comics");
+
+        //mi assicuro che l'utente scriva qualcosa di sensato 
+        if(!is_numeric($id) || (int) $id >= count($data)){
+            abort('404');
+        }
+
+
+        $comics=$data[$id];
+        return view("dettagliFumetto", compact("comics"));
+    })->name("comics.details");
+
     Route::get('/characters',function(){
         return view('characters');
     })->name("characters");
